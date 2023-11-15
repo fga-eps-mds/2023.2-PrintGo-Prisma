@@ -1,0 +1,25 @@
+{
+  "name": "2023.2-printgo-prisma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "db:introspect": "dotenv -- prisma introspect",
+    "db:gen": "dotenv -- prisma generate",
+    "gen": "prisma generate",
+    "db:deploy": "prisma migrate deploy",
+    "postinstall": "tsc && npx prisma@5.6.0 generate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "prisma": "^5.6.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.6.0"
+  }
+}
