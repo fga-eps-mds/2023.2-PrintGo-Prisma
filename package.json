@@ -1,5 +1,5 @@
 {
-  "name": "2023.2-printgo-prisma",
+  "name": "@fernandes-natanael/2023.2-printgo-prisma",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,6 +9,13 @@
     "gen": "prisma generate",
     "db:deploy": "prisma migrate deploy",
     "postinstall": "tsc && npx prisma@5.6.0 generate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fga-eps-mds/2023.2-PrintGo-Prisma.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fga-eps-mds/2023.2-PrintGo-Prisma/issues"
   },
   "keywords": [],
   "author": "",
