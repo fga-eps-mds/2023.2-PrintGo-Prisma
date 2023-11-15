@@ -1,13 +1,13 @@
 {
   "name": "@fernandes-natanael/printgo-prisma",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "scripts": {
     "db:introspect": "dotenv -- prisma introspect",
     "db:gen": "dotenv -- prisma generate",
     "gen": "prisma generate",
     "db:deploy": "prisma migrate deploy",
-    "postinstall": "tsc && prisma generate"
+    "postinstall": "prisma generate"
   },
   "repository": {
     "type": "git",
