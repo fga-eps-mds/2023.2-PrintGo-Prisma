@@ -8,9 +8,6 @@ push:
     # types: [opened, synchronize, reopened]
     branches:
       - main
-on:
-  release:
-    types: [created]
 
 jobs:
   build:
@@ -20,7 +17,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 18
-      - run: mkdir
+      - run: mkdir 
       - run: npm ci
 
   publish-gpr:
