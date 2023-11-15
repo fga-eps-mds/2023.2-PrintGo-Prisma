@@ -1,6 +1,7 @@
 name: Prisma CI/CD
 
-push:
+on:
+  push:
     branches:
       - main
   pull_request:

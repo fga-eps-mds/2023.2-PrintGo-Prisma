@@ -1,7 +1,8 @@
 
 name: Node.js Package
 
-push:
+on:
+  push:
     branches:
       - main
   pull_request:
