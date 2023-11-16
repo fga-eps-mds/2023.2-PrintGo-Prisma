@@ -69,12 +69,12 @@ model Impressora {
   dataInstalacao DateTime
   dataUltimoContador DateTime
   // unidadePai String
-  unidadesFilho String
+  unidadeId String?
   impressoes        Impressao[]
   locadora User? @relation(fields: [codigoLocadora], references: [id])
   padrao Padrao @relation(fields: [padrao_id], references: [id])
   // unidadePais Unidade? @relation("unidade_pai_fk", fields: [unidadePai], references: [id])
-  unidadeFilhas Unidade? @relation(fields: [unidadesFilho], references: [id])
+  unidade Unidade? @relation(fields: [unidadeId], references: [id])
   @@map("impressoras")
 }
 
