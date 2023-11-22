@@ -25,7 +25,7 @@ model User {
 
 model Unidade {
   id          String @id @default(cuid())
-  id_unidade_referencia String?
+  id_unidade_referencia String @unique
   nome        String @unique
   logradouro  String?
   complemento String?
