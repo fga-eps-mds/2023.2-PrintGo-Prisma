@@ -27,12 +27,12 @@ model Unidade {
   id          String @id @default(cuid())
   id_unidade_referencia String?
   nome        String @unique
-  logradouro  String
-  complemento String
-  bairro      String
-  cidade      String
-  cep         String
-  numero      Int
+  logradouro  String?
+  complemento String?
+  bairro      String?
+  cidade      String?
+  cep         String?
+  numero      Int?
 
   usuarios    User[]
   impressoras Impressora[]
