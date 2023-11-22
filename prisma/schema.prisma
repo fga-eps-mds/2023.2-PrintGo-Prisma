@@ -18,25 +18,8 @@ model User {
   cargos     Cargo[]     @default([USER])
   impressoes Impressao[]
   impressoras Impressora[]
-  unidade    Unidade?    @relation(fields: [unidade_id], references: [id])
 
   @@map("users")
-}
-
-model Unidade {
-  id          String @id @default(cuid())
-  id_unidade_referencia String?
-  nome        String @unique
-  logradouro  String?
-  complemento String?
-  bairro      String?
-  cidade      String?
-  cep         String?
-  numero      Int?
-
-  usuarios    User[]
-  impressoras Impressora[]
-  @@map("unidades")
 }
 
 model Padrao {
@@ -73,7 +56,6 @@ model Impressora {
   impressoes        Impressao[]
   locadora User? @relation(fields: [codigoLocadora], references: [id])
   padrao Padrao @relation(fields: [padrao_id], references: [id])
-  unidade Unidade? @relation(fields: [unidadeId], references: [id])
   @@map("impressoras")
 }
 
