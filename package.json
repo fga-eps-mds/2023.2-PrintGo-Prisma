@@ -1,14 +1,21 @@
 {
-  "name": "2023.2-printgo-prisma",
-  "version": "1.0.0",
+  "name": "@fernandes-natanael/printgo-prisma",
+  "version": "1.0.12",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "db:introspect": "dotenv -- prisma introspect",
     "db:gen": "dotenv -- prisma generate",
     "gen": "prisma generate",
-    "db:deploy": "prisma migrate deploy",
-    "postinstall": "tsc && npx prisma@5.6.0 generate"
+    "db:deploy": "prisma db pull && prisma db push && prisma migrate deploy ",
+    "db:migrate": "prisma migrate",
+    "postinstall": "prisma generate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fga-eps-mds/2023.2-PrintGo-Prisma.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fga-eps-mds/2023.2-PrintGo-Prisma/issues"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +26,19 @@
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   },
+  "peerDependencies": {
+    "@prisma/client": "*",
+    "prisma": "*"
+  },
   "dependencies": {
-    "@prisma/client": "^5.6.0"
-  }
+    "@prisma/client": "*",
+    "dotenv-cli": "^7.3.0"
+  },
+  "main": "client/index.js",
+  "types": "client/index.d.ts",
+  "files": [
+    "client/index.js",
+    "client/index.d.ts",
+    "/prisma/schema.prisma"
+  ]
 }
