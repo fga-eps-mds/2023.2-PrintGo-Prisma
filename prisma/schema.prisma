@@ -1,4 +1,4 @@
-generator client {
+ generator client {
   provider = "prisma-client-js"
   binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
@@ -24,18 +24,18 @@ model User {
 
 model Padrao {
   id                String           @id @default(cuid())
-  tipo             String
+  tipo              String
   marca             String
-  modelo             String
-  numeroSerie     String
-  versaoFirmware  String
-  tempoAtivoSistema DateTime
-  totalDigitalizacoes Int
-  totalCopiasPB Int
-  totalCopiasColoridas Int
-  totalImpressoesPb Int
-  totalImpressoesColoridas Int
-  totalGeral Int
+  modelo            String
+  numeroSerie       String
+  versaoFirmware    String
+  tempoAtivoSistema String
+  totalDigitalizacoes String
+  totalCopiasPB String
+  totalCopiasColoridas String
+  totalImpressoesPb String
+  totalImpressoesColoridas String
+  totalGeral String
   enderecoIp String
 
   impressoras Impressora[]
@@ -52,7 +52,7 @@ model Impressora {
   contadorInstalacao Int
   dataInstalacao DateTime
   dataUltimoContador DateTime
-  status     EmpressoraStatus     @default(ATIVO)
+  status     ImpressoraStatus     @default(ATIVO)
   unidadeId String?
   impressoes        Impressao[]
   locadora User? @relation(fields: [codigoLocadora], references: [id])
@@ -73,7 +73,7 @@ model Impressao {
   @@map("impressoes")
 }
 
-enum EmpressoraStatus {
+enum ImpressoraStatus {
   ATIVO
   DESATIVADO
 }
