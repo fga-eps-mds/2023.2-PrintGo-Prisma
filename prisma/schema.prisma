@@ -1,5 +1,5 @@
- generator client {
-  provider = "prisma-client-js"
+generator client {
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
@@ -9,13 +9,13 @@ datasource db {
 }
 
 model User {
-  id          String      @id @default(cuid())
-  email       String      @unique
+  id          String       @id @default(cuid())
+  email       String       @unique
   nome        String
   senha       String
   documento   String
   unidade_id  String?
-  cargos      Cargo[]     @default([USER])
+  cargos      Cargo[]      @default([USER])
   impressoes  Impressao[]
   impressoras Impressora[]
 
@@ -23,41 +23,42 @@ model User {
 }
 
 model Padrao {
-  id                          String           @id @default(cuid())
-  tipo                        String
-  marca                       String
-  modelo                      String
-  numeroSerie                 String
-  versaoFirmware              String
-  tempoAtivoSistema           String
-  totalDigitalizacoes         String
-  totalCopiasPB               String
-  totalCopiasColoridas        String
-  totalImpressoesPb           String
-  totalImpressoesColoridas    String
-  totalGeral                  String
-  enderecoIp                  String
-  status                      PadraoStatus     @default(ATIVO)
-
-  impressoras Impressora[]
+  id                       String       @id @default(cuid())
+  tipo                     String
+  marca                    String
+  modelo                   String
+  numeroSerie              String
+  versaoFirmware           String
+  totalDigitalizacoes      String
+  totalCopiasPB            String
+  totalCopiasColoridas     String
+  totalImpressoesPb        String
+  totalImpressoesColoridas String
+  totalGeral               String
+  enderecoIp               String
+  status                   PadraoStatus @default(ATIVO)
+  tempoAtivoSistema        String
+  impressoras              Impressora[]
 
   @@map("padroes")
 }
 
 model Impressora {
-  id                    String      @id @default(cuid())
-  padrao_id             String
-  ip                    String      @unique
-  numeroSerie           String
-  codigoLocadora        String
-  contadorInstalacao    Int
-  dataInstalacao        DateTime
-  dataUltimoContador    DateTime
-  status                ImpressoraStatus     @default(ATIVO)
-  unidadeId             String?
-  impressoes            Impressao[]
-  locadora User?        @relation(fields: [codigoLocadora], references: [id])
-  padrao Padrao         @relation(fields: [padrao_id], references: [id])
+  id                 String           @id @default(cuid())
+  padrao_id          String
+  locadora_id        String?
+  ip                 String           @unique
+  numeroSerie        String
+  codigoLocadora     String
+  contadorInstalacao Int
+  dataInstalacao     DateTime
+  dataUltimoContador DateTime
+  unidadeId          String?
+  status             ImpressoraStatus @default(ATIVO)
+  impressoes         Impressao[]
+  locadora           User?            @relation(fields: [locadora_id], references: [id])
+  padrao             Padrao           @relation(fields: [padrao_id], references: [id])
+
   @@map("impressoras")
 }
 
