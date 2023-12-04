@@ -48,7 +48,7 @@ model Impressora {
   padrao_id          String
   locadora_id        String?
   ip                 String           @unique
-  numeroSerie        String
+  numeroSerie        String           @unique
   codigoLocadora     String
   contadorInstalacao Int
   dataInstalacao     DateTime
@@ -58,7 +58,7 @@ model Impressora {
   impressoes         Impressao[]
   locadora           User?            @relation(fields: [locadora_id], references: [id])
   padrao             Padrao           @relation(fields: [padrao_id], references: [id])
-
+  contadores         Contador[]
   @@map("impressoras")
 }
 
@@ -73,6 +73,21 @@ model Impressao {
   user           User       @relation(fields: [user_id], references: [id])
 
   @@map("impressoes")
+}
+
+model Contador {
+  id                        String    @id @default(cuid())
+  numeroSerie               String
+  contadorCopiasPB          String
+  contadorImpressoesPB      String
+  contadorCopiasColoridas   String?
+  contadorImpressoesColoridas String?
+  contadorGeral             String
+  dataHoraEmissaoRelatorio  DateTime
+  pdfAnexo                  String? 
+  serie                     Impressora @relation(fields: [numeroSerie], references: [numeroSerie])
+
+  @@map("contadores")
 }
 
 enum ImpressoraStatus {
@@ -90,3 +105,4 @@ enum Cargo {
   ADMIN
   LOCADORA
 }
+
