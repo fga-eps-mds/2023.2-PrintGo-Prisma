@@ -1,11 +1,11 @@
 -- CreateEnum
-CREATE TYPE "Cargo" AS ENUM ('USER', 'ADMIN', 'LOCADORA');
-
--- CreateEnum
 CREATE TYPE "ImpressoraStatus" AS ENUM ('ATIVO', 'DESATIVADO');
 
 -- CreateEnum
 CREATE TYPE "PadraoStatus" AS ENUM ('ATIVO', 'DESATIVADO');
+
+-- CreateEnum
+CREATE TYPE "Cargo" AS ENUM ('USER', 'ADMIN', 'LOCADORA');
 
 -- CreateTable
 CREATE TABLE "users" (
@@ -44,15 +44,15 @@ CREATE TABLE "padroes" (
 -- CreateTable
 CREATE TABLE "impressoras" (
     "id" STRING NOT NULL,
+    "padrao_id" STRING NOT NULL,
+    "locadora_id" STRING,
+    "ip" STRING NOT NULL,
+    "numeroSerie" STRING NOT NULL,
     "codigoLocadora" STRING NOT NULL,
     "contadorInstalacao" INT4 NOT NULL,
     "dataInstalacao" TIMESTAMP(3) NOT NULL,
     "dataUltimoContador" TIMESTAMP(3) NOT NULL,
-    "ip" STRING NOT NULL,
-    "numeroSerie" STRING NOT NULL,
-    "padrao_id" STRING NOT NULL,
     "unidadeId" STRING,
-    "locadora_id" STRING,
     "status" "ImpressoraStatus" NOT NULL DEFAULT 'ATIVO',
 
     CONSTRAINT "impressoras_pkey" PRIMARY KEY ("id")
