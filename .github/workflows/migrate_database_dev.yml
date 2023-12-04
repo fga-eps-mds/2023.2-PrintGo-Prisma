@@ -16,9 +16,10 @@ jobs:
 
     - name: Prisma push
       run: npx prisma db push --skip-generate
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
     - name: Prisma Migrate Deploy
       run: npx prisma migrate deploy
-
       env:
         DATABASE_URL: ${{ secrets.DATABASE_URL_DEV }}
