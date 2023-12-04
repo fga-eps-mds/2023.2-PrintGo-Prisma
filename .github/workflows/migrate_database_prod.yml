@@ -1,4 +1,4 @@
-name: Prisma CI/CD
+name: Prisma CI/CD Prod
 
 on:
   push:
@@ -15,7 +15,6 @@ jobs:
       run: npm install
 
     - name: Prisma Migrate Deploy && Prisma push
-      run: npx prisma migrate deploy
-      run: npx prisma db push
+      run: npx prisma db push && npx prisma migrate deploy
       env:
         DATABASE_URL: ${{ secrets.DATABASE_URL }}
