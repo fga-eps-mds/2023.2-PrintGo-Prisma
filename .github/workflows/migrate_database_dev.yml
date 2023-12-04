@@ -14,7 +14,11 @@ jobs:
     - name: Install Dependencies
       run: npm install
 
-    - name: Prisma Migrate Deploy && Prisma push
-      run: npx prisma migrate deploy && npx prisma db push
+    - name: Prisma push
+      run: npx prisma db push --skip-generate
+
+    - name: Prisma Migrate Deploy
+      run: npx prisma migrate deploy
+
       env:
         DATABASE_URL: ${{ secrets.DATABASE_URL_DEV }}
