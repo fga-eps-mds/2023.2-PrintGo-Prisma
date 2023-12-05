@@ -1,6 +1,6 @@
 {
   "name": "@fernandes-natanael/printgo-prisma",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "",
   "scripts": {
     "db:introspect": "dotenv -- prisma introspect",
