@@ -28,6 +28,7 @@ model Padrao {
   id                       String       @id @default(cuid())
   tipo                     String
   marca                    String
+  modeloImpressora         String?
   modelo                   String
   numeroSerie              String
   versaoFirmware           String
