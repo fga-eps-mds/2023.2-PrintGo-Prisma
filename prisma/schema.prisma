@@ -49,19 +49,18 @@ model Padrao {
 
 model Impressora {
   id                 String           @id @default(cuid())
-  padrao_id          String
-  locadora_id        String?
   ip                 String           @unique
   numeroSerie        String           @unique
-  codigoLocadora     String
-  contadorInstalacao Int
-  dataInstalacao     DateTime
-  dataUltimoContador DateTime
+  padrao_id          String
+  codigoLocadora     String?
+  locadora_id        String?
+  contadorInstalacao Int @default(0)
+  dataInstalacao     DateTime?
+  ultimoContador     Int @default(0)
+  dataUltimoContador DateTime?
+  contadorRetiradas  Int @default(0)
+  dataContadorRetirada      DateTime?
   unidadeId          String?
-  contadorRetirada   String?
-  dataRetirada      String?
-  datacontadorRetirada      DateTime?
-  ultimoContador     String?
   status             ImpressoraStatus @default(ATIVO)
   impressoes         Impressao[]
   locadora           User?            @relation(fields: [locadora_id], references: [id])
