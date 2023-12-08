@@ -1,9 +1,9 @@
 version: "3"
 
 services:
-  postgres:
+  postgres-printgo:
     image: postgres:alpine
-    container_name: schedula_location_db
+    container_name: postgres-printgo
     ports:
       - "5432:5432"
     volumes:
@@ -23,13 +23,13 @@ services:
     ports:
       - "16544:80"
     depends_on:
-      - postgres
+      - postgres-printgo
     networks:
       - printgo_network
 
-
 networks:
-    printgo_network:
-        driver: bridge
-        driver_opts:
-            com.docker.network.bridge.enable_icc: "true"
+  printgo_network:
+    name: printgo_network
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.enable_icc: "true"
