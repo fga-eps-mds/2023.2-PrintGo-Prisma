@@ -8,6 +8,7 @@
     "gen": "prisma generate",
     "db:deploy": "prisma db pull && prisma db push && prisma migrate deploy ",
     "db:migrate": "prisma migrate",
+    "migrate": "prisma db push --force-reset",
     "postinstall": "prisma generate"
   },
   "repository": {
