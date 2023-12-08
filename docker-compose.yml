@@ -27,6 +27,15 @@ services:
     networks:
       - printgo_network
 
+  myapp:
+    build: .  
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres-printgo
+    networks:
+      - printgo_network
+
 networks:
   printgo_network:
     name: printgo_network
