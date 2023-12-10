@@ -27,14 +27,16 @@ services:
     networks:
       - printgo_network
 
-  myapp:
-    build: .  
-    ports:
-      - "3000:3000"
+  prisma-migrate:
+    image: node:18
     depends_on:
       - postgres-printgo
     networks:
       - printgo_network
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: sh -c "npm install && npm run migrate"
 
 networks:
   printgo_network:
