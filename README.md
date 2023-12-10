@@ -17,6 +17,8 @@
 
 3. Container do banco rodando execute as migrações da base de dados:
 
+- **Atenção: comando deverá ser executado fora do container**
+
 ```bash
     npm run migrate
 ```
